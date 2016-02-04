@@ -668,7 +668,7 @@
         </menu>
         <menu id="NxK-dP-J3n">
             <items>
-                <menuItem title="Play Stream" keyEquivalent="1" id="e6e-Xd-ezV">
+                <menuItem title="Play Main" keyEquivalent="1" id="e6e-Xd-ezV">
                     <connections>
                         <action selector="launchMain:" target="Voe-Tx-rLC" id="VKh-vS-Aw9"/>
                     </connections>
