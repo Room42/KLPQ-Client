@@ -47,4 +47,3 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
 }
-
