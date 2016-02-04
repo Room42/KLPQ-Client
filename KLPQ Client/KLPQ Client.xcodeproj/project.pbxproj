@@ -1,0 +1,494 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BF19128D1C62C89800264B64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19128C1C62C89800264B64 /* AppDelegate.swift */; };
+		BF19128F1C62C89800264B64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF19128E1C62C89800264B64 /* Assets.xcassets */; };
+		BF1912921C62C89800264B64 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF1912901C62C89800264B64 /* MainMenu.xib */; };
+		BF19129D1C62C89800264B64 /* KLPQ_ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19129C1C62C89800264B64 /* KLPQ_ClientTests.swift */; };
+		BF1912A81C62C89800264B64 /* KLPQ_ClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1912A71C62C89800264B64 /* KLPQ_ClientUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BF1912991C62C89800264B64 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF1912811C62C89800264B64 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF1912881C62C89800264B64;
+			remoteInfo = "KLPQ Client";
+		};
+		BF1912A41C62C89800264B64 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF1912811C62C89800264B64 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF1912881C62C89800264B64;
+			remoteInfo = "KLPQ Client";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BF1912891C62C89800264B64 /* KLPQ Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KLPQ Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF19128C1C62C89800264B64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BF19128E1C62C89800264B64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF1912911C62C89800264B64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		BF1912931C62C89800264B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF1912981C62C89800264B64 /* KLPQ ClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KLPQ ClientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF19129C1C62C89800264B64 /* KLPQ_ClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KLPQ_ClientTests.swift; sourceTree = "<group>"; };
+		BF19129E1C62C89800264B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF1912A31C62C89800264B64 /* KLPQ ClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KLPQ ClientUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF1912A71C62C89800264B64 /* KLPQ_ClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KLPQ_ClientUITests.swift; sourceTree = "<group>"; };
+		BF1912A91C62C89800264B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF1912861C62C89800264B64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF1912951C62C89800264B64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF1912A01C62C89800264B64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF1912801C62C89800264B64 = {
+			isa = PBXGroup;
+			children = (
+				BF19128B1C62C89800264B64 /* KLPQ Client */,
+				BF19129B1C62C89800264B64 /* KLPQ ClientTests */,
+				BF1912A61C62C89800264B64 /* KLPQ ClientUITests */,
+				BF19128A1C62C89800264B64 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BF19128A1C62C89800264B64 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF1912891C62C89800264B64 /* KLPQ Client.app */,
+				BF1912981C62C89800264B64 /* KLPQ ClientTests.xctest */,
+				BF1912A31C62C89800264B64 /* KLPQ ClientUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF19128B1C62C89800264B64 /* KLPQ Client */ = {
+			isa = PBXGroup;
+			children = (
+				BF19128C1C62C89800264B64 /* AppDelegate.swift */,
+				BF19128E1C62C89800264B64 /* Assets.xcassets */,
+				BF1912901C62C89800264B64 /* MainMenu.xib */,
+				BF1912931C62C89800264B64 /* Info.plist */,
+			);
+			path = "KLPQ Client";
+			sourceTree = "<group>";
+		};
+		BF19129B1C62C89800264B64 /* KLPQ ClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				BF19129C1C62C89800264B64 /* KLPQ_ClientTests.swift */,
+				BF19129E1C62C89800264B64 /* Info.plist */,
+			);
+			path = "KLPQ ClientTests";
+			sourceTree = "<group>";
+		};
+		BF1912A61C62C89800264B64 /* KLPQ ClientUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BF1912A71C62C89800264B64 /* KLPQ_ClientUITests.swift */,
+				BF1912A91C62C89800264B64 /* Info.plist */,
+			);
+			path = "KLPQ ClientUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BF1912881C62C89800264B64 /* KLPQ Client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF1912AC1C62C89800264B64 /* Build configuration list for PBXNativeTarget "KLPQ Client" */;
+			buildPhases = (
+				BF1912851C62C89800264B64 /* Sources */,
+				BF1912861C62C89800264B64 /* Frameworks */,
+				BF1912871C62C89800264B64 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KLPQ Client";
+			productName = "KLPQ Client";
+			productReference = BF1912891C62C89800264B64 /* KLPQ Client.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BF1912971C62C89800264B64 /* KLPQ ClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF1912AF1C62C89800264B64 /* Build configuration list for PBXNativeTarget "KLPQ ClientTests" */;
+			buildPhases = (
+				BF1912941C62C89800264B64 /* Sources */,
+				BF1912951C62C89800264B64 /* Frameworks */,
+				BF1912961C62C89800264B64 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF19129A1C62C89800264B64 /* PBXTargetDependency */,
+			);
+			name = "KLPQ ClientTests";
+			productName = "KLPQ ClientTests";
+			productReference = BF1912981C62C89800264B64 /* KLPQ ClientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BF1912A21C62C89800264B64 /* KLPQ ClientUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF1912B21C62C89800264B64 /* Build configuration list for PBXNativeTarget "KLPQ ClientUITests" */;
+			buildPhases = (
+				BF19129F1C62C89800264B64 /* Sources */,
+				BF1912A01C62C89800264B64 /* Frameworks */,
+				BF1912A11C62C89800264B64 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF1912A51C62C89800264B64 /* PBXTargetDependency */,
+			);
+			name = "KLPQ ClientUITests";
+			productName = "KLPQ ClientUITests";
+			productReference = BF1912A31C62C89800264B64 /* KLPQ ClientUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF1912811C62C89800264B64 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = podkolpakom.net;
+				TargetAttributes = {
+					BF1912881C62C89800264B64 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					BF1912971C62C89800264B64 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = BF1912881C62C89800264B64;
+					};
+					BF1912A21C62C89800264B64 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = BF1912881C62C89800264B64;
+					};
+				};
+			};
+			buildConfigurationList = BF1912841C62C89800264B64 /* Build configuration list for PBXProject "KLPQ Client" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BF1912801C62C89800264B64;
+			productRefGroup = BF19128A1C62C89800264B64 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF1912881C62C89800264B64 /* KLPQ Client */,
+				BF1912971C62C89800264B64 /* KLPQ ClientTests */,
+				BF1912A21C62C89800264B64 /* KLPQ ClientUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BF1912871C62C89800264B64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF19128F1C62C89800264B64 /* Assets.xcassets in Resources */,
+				BF1912921C62C89800264B64 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF1912961C62C89800264B64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF1912A11C62C89800264B64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF1912851C62C89800264B64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF19128D1C62C89800264B64 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF1912941C62C89800264B64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF19129D1C62C89800264B64 /* KLPQ_ClientTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF19129F1C62C89800264B64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF1912A81C62C89800264B64 /* KLPQ_ClientUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BF19129A1C62C89800264B64 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF1912881C62C89800264B64 /* KLPQ Client */;
+			targetProxy = BF1912991C62C89800264B64 /* PBXContainerItemProxy */;
+		};
+		BF1912A51C62C89800264B64 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF1912881C62C89800264B64 /* KLPQ Client */;
+			targetProxy = BF1912A41C62C89800264B64 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BF1912901C62C89800264B64 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF1912911C62C89800264B64 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BF1912AA1C62C89800264B64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BF1912AB1C62C89800264B64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BF1912AD1C62C89800264B64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "KLPQ Client/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.KLPQ.KLPQ-Client";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BF1912AE1C62C89800264B64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "KLPQ Client/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.KLPQ.KLPQ-Client";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BF1912B01C62C89800264B64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "KLPQ ClientTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.KLPQ.KLPQ-ClientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KLPQ Client.app/Contents/MacOS/KLPQ Client";
+			};
+			name = Debug;
+		};
+		BF1912B11C62C89800264B64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "KLPQ ClientTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.KLPQ.KLPQ-ClientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KLPQ Client.app/Contents/MacOS/KLPQ Client";
+			};
+			name = Release;
+		};
+		BF1912B31C62C89800264B64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "KLPQ ClientUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.KLPQ.KLPQ-ClientUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "KLPQ Client";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		BF1912B41C62C89800264B64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "KLPQ ClientUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.KLPQ.KLPQ-ClientUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "KLPQ Client";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF1912841C62C89800264B64 /* Build configuration list for PBXProject "KLPQ Client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF1912AA1C62C89800264B64 /* Debug */,
+				BF1912AB1C62C89800264B64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF1912AC1C62C89800264B64 /* Build configuration list for PBXNativeTarget "KLPQ Client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF1912AD1C62C89800264B64 /* Debug */,
+				BF1912AE1C62C89800264B64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BF1912AF1C62C89800264B64 /* Build configuration list for PBXNativeTarget "KLPQ ClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF1912B01C62C89800264B64 /* Debug */,
+				BF1912B11C62C89800264B64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BF1912B21C62C89800264B64 /* Build configuration list for PBXNativeTarget "KLPQ ClientUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF1912B31C62C89800264B64 /* Debug */,
+				BF1912B41C62C89800264B64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BF1912811C62C89800264B64 /* Project object */;
+}
