@@ -471,6 +471,7 @@
 				BF1912AE1C62C89800264B64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BF1912AF1C62C89800264B64 /* Build configuration list for PBXNativeTarget "KLPQ ClientTests" */ = {
 			isa = XCConfigurationList;
@@ -479,6 +480,7 @@
 				BF1912B11C62C89800264B64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BF1912B21C62C89800264B64 /* Build configuration list for PBXNativeTarget "KLPQ ClientUITests" */ = {
 			isa = XCConfigurationList;
@@ -487,6 +489,7 @@
 				BF1912B41C62C89800264B64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
