@@ -33,10 +33,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     task.launch()
     }
 @IBAction func launchMurshun(sender: NSMenuItem) { // Murshun Channel
-        let task = NSTask()
-        task.launchPath = "/usr/local/bin/livestreamer"
-        task.arguments = ["rtmp://dedick.podkolpakom.net/live/murshun live=1", "best"]
-        task.launch()
+    let task = NSTask()
+    task.launchPath = "/usr/local/bin/livestreamer"
+    task.arguments = ["rtmp://dedick.podkolpakom.net/live/murshun live=1", "best"]
+    task.launch()
     }
-
 }
