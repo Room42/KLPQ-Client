@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
     // Menu
- @IBAction func launchMain(sender: NSMenuItem) { // Main Channel
+@IBAction func launchMain(sender: NSMenuItem) { // Main Channel
     let task = NSTask()
     task.launchPath = "/usr/local/bin/livestreamer"
     task.arguments = ["rtmp://dedick.podkolpakom.net/live/liveevent live=1", "best"]
