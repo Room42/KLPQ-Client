@@ -14,8 +14,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
     
     func startTimer (){  //timer settings
-        NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "statusCheck:", userInfo: nil, repeats: true)
-            }
+        NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: #selector(AppDelegate.statusCheck(_:)), userInfo: nil, repeats: true)
+           }
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
@@ -25,16 +25,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         startTimer()  //Timer launch
         }
 //Online Checking
-    @objc func statusCheck (timer:NSTimer!) {
+    @objc func statusCheck (timer: NSTimer) {
                 //URL Main channel
         let myURLString = "http://dedick.podkolpakom.net/stats/ams/gib_stats.php?stream=liveevent"
                 //Json parsing
                 if let myURL = NSURL(string: myURLString) {
                     let myHTMLString = try! NSString(contentsOfURL: myURL, encoding: NSUTF8StringEncoding)
-                    let mess = myHTMLString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+                    let mess = myHTMLString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
                     //Using result
                     do {
-                        let json = try NSJSONSerialization.JSONObjectWithData(mess, options: []) as! [String: AnyObject]
+                        let json = try NSJSONSerialization.JSONObjectWithData(mess!, options: []) as! [String: AnyObject]
                         if let isOnline = json["live"] as! String? {
                             if isOnline == "Online" {
                                 let icon = NSImage(named: "statusIconOn")
@@ -45,16 +45,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                 let icon = NSImage(named: "statusIcon")
                                 statusItem.image = icon
                                 statusItem.menu = statusMenu
-                            }
+                                                            }
                         }
                     }
                     catch let error as NSError {
                         print("Failed to load: \(error.localizedDescription)")
                     }
                 }
-            }
+    
 
 
+}
     func applicationWillTerminate(aNotification: NSNotification) {
             // Insert code here to tear down your application
            }
