@@ -28,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //Online Checking
     @objc func statusCheck (_ timer: Timer) {
                 //URL Main channel
-        let myURLString = "http://dedick.podkolpakom.net/stats/ams/gib_stats.php?stream=liveevent"
+        let myURLString = "http://main.klpq.men/stats/ams/gib_stats.php?stream=liveevent"
                 //Json parsing
                 if let myURL = URL(string: myURLString) {
                     let myHTMLString = try! NSString(contentsOf: myURL, encoding: String.Encoding.utf8.rawValue)
@@ -65,19 +65,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 @IBAction func launchMain(_ sender: NSMenuItem) { // Main Channel
     let task = Process()
     task.launchPath = "/usr/local/bin/livestreamer"
-    task.arguments = ["rtmp://dedick.podkolpakom.net/live/liveevent live=1", "best"]
+    task.arguments = ["rtmp://main.klpq.men/live/liveevent live=1", "best"]
     task.launch()
     }
 @IBAction func launchTV(_ sender: NSMenuItem) { // TV Channel
     let task = Process()
     task.launchPath = "/usr/local/bin/livestreamer"
-    task.arguments = ["rtmp://dedick.podkolpakom.net/live/tvstream live=1", "best"]
+    task.arguments = ["rtmp://main.klpq.men/live/tvstream live=1", "best"]
     task.launch()
     }
 @IBAction func launchMurshun(_ sender: NSMenuItem) { // Murshun Channel
     let task = Process()
     task.launchPath = "/usr/local/bin/livestreamer"
-    task.arguments = ["rtmp://dedick.podkolpakom.net/live/murshun live=1", "best"]
+    task.arguments = ["rtmp://main.klpq.men/live/murshun live=1", "best"]
     task.launch()
     }
 }
