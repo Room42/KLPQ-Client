@@ -8,16 +8,17 @@
 import Cocoa
 import Foundation
 
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var statusMenu: NSMenu!
-    let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
+    let statusItem = NSStatusBar.system().statusItem(withLength: -1)
     
     func startTimer (){  //timer settings
-        NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: #selector(AppDelegate.statusCheck(_:)), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(AppDelegate.statusCheck(_:)), userInfo: nil, repeats: true)
            }
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         let icon = NSImage(named: "statusIcon")  //default icon
         statusItem.image = icon
@@ -25,16 +26,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         startTimer()  //Timer launch
         }
 //Online Checking
-    @objc func statusCheck (timer: NSTimer) {
+    @objc func statusCheck (_ timer: Timer) {
                 //URL Main channel
         let myURLString = "http://dedick.podkolpakom.net/stats/ams/gib_stats.php?stream=liveevent"
                 //Json parsing
-                if let myURL = NSURL(string: myURLString) {
-                    let myHTMLString = try! NSString(contentsOfURL: myURL, encoding: NSUTF8StringEncoding)
-                    let mess = myHTMLString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+                if let myURL = URL(string: myURLString) {
+                    let myHTMLString = try! NSString(contentsOf: myURL, encoding: String.Encoding.utf8.rawValue)
+                    let mess = myHTMLString.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: true)
                     //Using result
                     do {
-                        let json = try NSJSONSerialization.JSONObjectWithData(mess!, options: []) as! [String: AnyObject]
+                        let json = try JSONSerialization.jsonObject(with: mess!, options: []) as! [String: AnyObject]
                         if let isOnline = json["live"] as! String? {
                             if isOnline == "Online" {
                                 let icon = NSImage(named: "statusIconOn")
@@ -56,25 +57,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
 }
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
             // Insert code here to tear down your application
            }
  
     // Menu
-@IBAction func launchMain(sender: NSMenuItem) { // Main Channel
-    let task = NSTask()
+@IBAction func launchMain(_ sender: NSMenuItem) { // Main Channel
+    let task = Process()
     task.launchPath = "/usr/local/bin/livestreamer"
     task.arguments = ["rtmp://dedick.podkolpakom.net/live/liveevent live=1", "best"]
     task.launch()
     }
-@IBAction func launchTV(sender: NSMenuItem) { // TV Channel
-    let task = NSTask()
+@IBAction func launchTV(_ sender: NSMenuItem) { // TV Channel
+    let task = Process()
     task.launchPath = "/usr/local/bin/livestreamer"
     task.arguments = ["rtmp://dedick.podkolpakom.net/live/tvstream live=1", "best"]
     task.launch()
     }
-@IBAction func launchMurshun(sender: NSMenuItem) { // Murshun Channel
-    let task = NSTask()
+@IBAction func launchMurshun(_ sender: NSMenuItem) { // Murshun Channel
+    let task = Process()
     task.launchPath = "/usr/local/bin/livestreamer"
     task.arguments = ["rtmp://dedick.podkolpakom.net/live/murshun live=1", "best"]
     task.launch()
