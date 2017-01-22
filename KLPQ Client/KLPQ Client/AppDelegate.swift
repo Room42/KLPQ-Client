@@ -30,11 +30,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 //URL Main channel
         let myURLString = "http://main.klpq.men/stats/ams/gib_stats.php?stream=liveevent"
                 //Json parsing
-                if let myURL = URL(string: myURLString) {
+                if let myURL = URL(string: myURLString) {   
+                do {    
                     let myHTMLString = try! NSString(contentsOf: myURL, encoding: String.Encoding.utf8.rawValue)
                     let mess = myHTMLString.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: true)
                     //Using result
-                    do {
                         let json = try JSONSerialization.jsonObject(with: mess!, options: []) as! [String: AnyObject]
                         if let isOnline = json["live"] as! String? {
                             if isOnline == "Online" {
