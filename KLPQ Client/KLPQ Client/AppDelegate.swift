@@ -3,7 +3,7 @@
 //  KLPQ Client
 //
 //  Created by Facel on 2/4/16.
-//  Copyright © 2016 podkolpakom.net. All rights reserved.
+//  Copyright © 2017 klpq.men. All rights reserved.
 //
 import Cocoa
 import Foundation
