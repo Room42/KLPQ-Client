@@ -53,9 +53,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         print("Failed to load: \(error.localizedDescription)")
                     }
                 }
-    
-
-
 }
     func applicationWillTerminate(_ aNotification: Notification) {
             // Insert code here to tear down your application
