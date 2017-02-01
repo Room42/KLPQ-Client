@@ -24,8 +24,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let qMedium = "medium"
     let qWorst = "worst"
     var qual = "best"
-    
     var proxy = 0
+    
+    var memMain = false
+    var memTv = false
+    var memMursh = false
+    var memError = false
+    
     
     func startTimer (){  //timer settings
         Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(AppDelegate.scheDuled), userInfo: nil, repeats: true)
@@ -50,28 +55,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         NSUserNotificationCenter.default.deliver(notification)
     }
     
-    //it works, but I think it's retarded
-    func doNotRepeatNotification(){
-        if (1..<4).contains(proxy) {
-            showNotification(message: "\(trueName) Channel is Online")
-        }
-        if (12..<37706).contains(proxy){
-            proxy = 6
-        }
-        if proxy == 37707{
-            showNotification(message: "Unable to receive status 👽")
-            proxy += 1
-        }
-        if proxy > 37708{
-            proxy = 0
-        }
-    }
-    
     
     
     
 //Online Checking
-func checkStatus(url: String, channel: String){
+    func checkStatus(url: String, channel: String, recall: Bool) -> Bool {
+        
+        var johnyM = recall
+        
         
         //Channel Name Resolver
         func nameRes() -> String{
@@ -101,7 +92,13 @@ func checkStatus(url: String, channel: String){
                         statusItem.image = icon
                         statusItem.menu = statusMenu
                           print("\(trueName) Channel is Online")
-                        proxy += 1
+                        proxy = 0
+                        if recall == false {
+                            johnyM = true
+                            
+                            showNotification(message: "\(trueName) Channel is Online")
+                        } else {
+                        }
                     }
                     else {
                         let icon = NSImage(named: "statusIcon")
@@ -109,6 +106,13 @@ func checkStatus(url: String, channel: String){
                         statusItem.menu = statusMenu
                           print ("\(trueName) Channel is Offline")
                         proxy = 0
+                        if recall == true {
+                            johnyM = false
+                            
+                            showNotification(message: "\(trueName) Channel is Offline")
+                        } else {
+                        }
+                        
                     }
                 }
             }
@@ -116,25 +120,26 @@ func checkStatus(url: String, channel: String){
                 let icon = NSImage(named: "statusIcon")
                 statusItem.image = icon
                 statusItem.menu = statusMenu
-
+                johnyM = false
+                
                 print("Failed to load: \(error.localizedDescription)")
                 
-                if proxy > 37707{
+                if proxy > 0{
                 } else{
-                proxy = 37707
-                    }
+                    showNotification(message: "Unable to receive status 👽")
+                    proxy += 1
+                }
             }
         }
+        return johnyM
     }
 
+    
+    
 @objc func scheDuled (_ timer: Timer){
-        checkStatus(url: statusUrl, channel: Main)
-    doNotRepeatNotification()
-        checkStatus(url: statusUrl, channel: TV)
-    doNotRepeatNotification()
-        checkStatus(url: statusUrl, channel: Mursh)
-    doNotRepeatNotification()
-    print(proxy)
+    memMain = checkStatus(url: statusUrl, channel: Main, recall: memMain)
+    memTv = checkStatus(url: statusUrl, channel: TV, recall: memTv)
+    memMursh = checkStatus(url: statusUrl, channel: Mursh, recall: memMursh)
     }
     
     
@@ -163,5 +168,4 @@ func checkStatus(url: String, channel: String){
 @IBAction func launchMurshun(_ sender: NSMenuItem) { // Murshun Channel
    launchStream(channel: Mursh, quality: qBest)
     }
-       
 }
