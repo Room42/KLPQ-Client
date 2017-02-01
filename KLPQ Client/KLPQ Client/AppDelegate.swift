@@ -29,7 +29,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     var memMain = false
     var memTv = false
     var memMursh = false
-    var memError = false
     
     
     func startTimer (){  //timer settings
