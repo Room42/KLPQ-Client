@@ -50,7 +50,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         NSUserNotificationCenter.default.deliver(notification)
     }
     
-    //lol, but it works
+    //it works, but I think it's retarded
     func doNotRepeatNotification(){
         if (1..<4).contains(proxy) {
             showNotification(message: "\(trueName) Channel is Online")
@@ -59,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             proxy = 6
         }
         if proxy == 37707{
-            showNotification(message: "Unable to recieve status 👽")
+            showNotification(message: "Unable to receive status 👽")
             proxy += 1
         }
         if proxy > 37708{
@@ -163,10 +163,5 @@ func checkStatus(url: String, channel: String){
 @IBAction func launchMurshun(_ sender: NSMenuItem) { // Murshun Channel
    launchStream(channel: Mursh, quality: qBest)
     }
-    
-//custom launcher
-
-
-    
-    
+       
 }
