@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -13,25 +15,40 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="KLPQ_Client" customModuleProvider="target">
             <connections>
+                <outlet property="LPanel" destination="DWp-Xe-rgi" id="ngZ-fj-ZcW"/>
+                <outlet property="LQCheck" destination="Gmt-ZE-Ssv" id="jjd-ql-FlK"/>
+                <outlet property="cGo" destination="iA2-HX-H9n" id="0NS-j9-2Hi"/>
+                <outlet property="customGo" destination="KEA-Y2-aFv" id="kxv-Yk-zqX"/>
+                <outlet property="customUrl" destination="W3n-gC-i8F" id="OzH-vb-WAC"/>
                 <outlet property="statusMenu" destination="NxK-dP-J3n" id="rhY-aV-RJ5"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="NxK-dP-J3n">
             <items>
-                <menuItem title="Main Channel" keyEquivalent="1" id="e6e-Xd-ezV">
+                <menuItem title="Main Channel" id="e6e-Xd-ezV">
+                    <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="launchMain:" target="Voe-Tx-rLC" id="VKh-vS-Aw9"/>
+                        <action selector="launchMain:" target="Voe-Tx-rLC" id="G6s-97-AYu"/>
                     </connections>
                 </menuItem>
-                <menuItem title="TV Channel" keyEquivalent="2" id="uCG-UH-5Ij">
+                <menuItem title="TV Channel" id="uCG-UH-5Ij">
+                    <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="launchTV:" target="Voe-Tx-rLC" id="XDc-VR-66z"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Murshun Channel" keyEquivalent="3" id="2Yp-Sa-3Js">
+                <menuItem title="Murshun Channel" id="2Yp-Sa-3Js">
+                    <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="launchMurshun:" target="Voe-Tx-rLC" id="dpk-9Y-CIV"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="Eei-TA-9Nc"/>
+                <menuItem title="Launch Custom..." id="eEn-7e-mSr">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="deminiaturize:" target="DWp-Xe-rgi" id="040-20-LFm"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="nYm-pj-Pz1"/>
@@ -41,8 +58,48 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="321" y="352.5"/>
+            <point key="canvasLocation" x="-8" y="58"/>
         </menu>
         <userDefaultsController representsSharedInstance="YES" id="mFK-sx-Ldb"/>
+        <window identifier="Lpan" title="Launch Custom Channel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="DWp-Xe-rgi" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" HUD="YES"/>
+            <rect key="contentRect" x="1275" y="912" width="560" height="40"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <view key="contentView" id="I2Z-1m-8zJ">
+                <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3n-gC-i8F">
+                        <rect key="frame" x="20" y="9" width="364" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Enter stream URL" drawsBackground="YES" id="b82-gW-Vak">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KEA-Y2-aFv">
+                        <rect key="frame" x="488" y="4" width="58" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Go" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iA2-HX-H9n">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cGo:" target="Voe-Tx-rLC" id="82W-Ab-IUI"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gmt-ZE-Ssv">
+                        <rect key="frame" x="390" y="12" width="94" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Low Quality" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" baseWritingDirection="leftToRight" inset="2" id="oVO-8q-gB6">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                    </button>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="-21" y="242"/>
+        </window>
     </objects>
 </document>

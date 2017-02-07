@@ -54,8 +54,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         NSUserNotificationCenter.default.deliver(notification)
     }
     
-    
-    
+    //change icon
+    func iconChange (){
+        if memMain == true{
+            let icon = NSImage(named: "statusIconOn")
+            statusItem.image = icon
+            statusItem.menu = statusMenu
+        } else {
+            let icon = NSImage(named: "statusIcon")
+            statusItem.image = icon
+            statusItem.menu = statusMenu
+        }
+    }
     
 //Online Checking
     func checkStatus(url: String, channel: String, recall: Bool) -> Bool {
@@ -87,31 +97,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                 let json = try JSONSerialization.jsonObject(with: encode!, options: []) as! [String: AnyObject]
                 if let isOnline = json["live"] as! String? {
                     if isOnline == "Online" {
-                        let icon = NSImage(named: "statusIconOn")
-                        statusItem.image = icon
-                        statusItem.menu = statusMenu
-                          print("\(trueName) Channel is Online")
                         proxy = 0
+                          print("\(trueName) Channel is Online")
                         if recall == false {
                             johnyM = true
-                            
                             showNotification(message: "\(trueName) Channel is Online")
                         } else {
-                        }
+                            }
                     }
                     else {
-                        let icon = NSImage(named: "statusIcon")
-                        statusItem.image = icon
-                        statusItem.menu = statusMenu
-                          print ("\(trueName) Channel is Offline")
                         proxy = 0
+                          print ("\(trueName) Channel is Offline")
                         if recall == true {
                             johnyM = false
-                            
                             showNotification(message: "\(trueName) Channel is Offline")
                         } else {
-                        }
-                        
+                            }
                     }
                 }
             }
@@ -139,6 +140,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     memMain = checkStatus(url: statusUrl, channel: Main, recall: memMain)
     memTv = checkStatus(url: statusUrl, channel: TV, recall: memTv)
     memMursh = checkStatus(url: statusUrl, channel: Mursh, recall: memMursh)
+    iconChange()
     }
     
     
@@ -146,7 +148,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     func launchStream(channel: String, quality: String) {
         let task = Process()
         task.launchPath = liveStreamer
-        task.arguments = ["\(klpqStreamUrl)\(channel) live=1", "\(quality)"]
+        task.arguments = ["\(channel)", "\(quality)"]
         task.launch()
     }
 
@@ -159,12 +161,31 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     // Menu
 
 @IBAction func launchMain(_ sender: NSMenuItem) { // Main Channel
-    launchStream(channel: Main, quality: qBest)
+    launchStream(channel: "\(klpqStreamUrl)\(Main) live=1", quality: qBest)
     }
 @IBAction func launchTV(_ sender: NSMenuItem) { // TV Channel
-   launchStream(channel: TV, quality: qBest)
+   launchStream(channel: "\(klpqStreamUrl)\(TV) live=1", quality: qBest)
     }
 @IBAction func launchMurshun(_ sender: NSMenuItem) { // Murshun Channel
-   launchStream(channel: Mursh, quality: qBest)
+   launchStream(channel: "\(klpqStreamUrl)\(Mursh) live=1", quality: qBest)
     }
+    
+    
+    
+//TEST CODE
+    @IBOutlet weak var LPanel: NSPanel!
+    
+    @IBOutlet weak var customUrl: NSTextField!
+
+    
+    @IBOutlet weak var LQCheck: NSButton!
+
+    @IBAction func cGo(_ sender: Any) {
+        let cUrl = customUrl.stringValue
+        launchStream(channel: cUrl, quality: qBest)
+        LPanel.close()
+    }
+
+    
+//TEST CODE
 }
