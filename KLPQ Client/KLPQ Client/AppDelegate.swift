@@ -74,20 +74,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         
         //Channel Name Resolver
-        func nameRes() -> String{
-            if channel == "liveevent"{
-                trueName = "Main"
-            }
-            if channel == "tvstream"{
-                trueName = "TV"
-            }
-            if channel == "murshun"{
-                trueName = "Murshun"
-            }; return trueName
+        switch channel {
+            case "liveevent": trueName = "Main"
+            case "tvstream": trueName = "TV"
+            case "murshun": trueName = "Murshun"
+        default: break
+        
         }
-        _ = nameRes()
 
-    
     //recieve status
         let fullUrl = "\(url)\(channel)"
         if let reqURL = URL(string: fullUrl){
@@ -172,20 +166,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     
     
-//TEST CODE
+//Custom Launcher
     @IBOutlet weak var LPanel: NSPanel!
-    
-    @IBOutlet weak var customUrl: NSTextField!
-
-    
+    @IBOutlet weak var getUrl: NSTextField!
     @IBOutlet weak var LQCheck: NSButton!
-
     @IBAction func cGo(_ sender: Any) {
-        let cUrl = customUrl.stringValue
-        launchStream(channel: cUrl, quality: qBest)
+        let qControl = LQCheck.stringValue
+        if qControl == "1"{
+            qual = "worst"
+        } else {
+            qual = "best"
+        }
+        let cUrl = getUrl.stringValue
+        launchStream(channel: cUrl, quality: qual)
+        getUrl.stringValue = ""
         LPanel.close()
     }
-
-    
-//TEST CODE
 }

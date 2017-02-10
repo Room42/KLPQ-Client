@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,9 +16,7 @@
             <connections>
                 <outlet property="LPanel" destination="DWp-Xe-rgi" id="ngZ-fj-ZcW"/>
                 <outlet property="LQCheck" destination="Gmt-ZE-Ssv" id="jjd-ql-FlK"/>
-                <outlet property="cGo" destination="iA2-HX-H9n" id="0NS-j9-2Hi"/>
-                <outlet property="customGo" destination="KEA-Y2-aFv" id="kxv-Yk-zqX"/>
-                <outlet property="customUrl" destination="W3n-gC-i8F" id="OzH-vb-WAC"/>
+                <outlet property="getUrl" destination="W3n-gC-i8F" id="hiA-a9-19h"/>
                 <outlet property="statusMenu" destination="NxK-dP-J3n" id="rhY-aV-RJ5"/>
             </connections>
         </customObject>
@@ -58,48 +55,106 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-8" y="58"/>
+            <point key="canvasLocation" x="-346" y="-408"/>
         </menu>
-        <userDefaultsController representsSharedInstance="YES" id="mFK-sx-Ldb"/>
-        <window identifier="Lpan" title="Launch Custom Channel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="DWp-Xe-rgi" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" HUD="YES"/>
+        <menu title="Main Menu" systemMenu="main" id="sJ1-1L-NOW">
+            <items>
+                <menuItem title="Edit" id="O4d-dW-dhg">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Edit" id="2eC-Ff-uuM">
+                        <items>
+                            <menuItem title="Undo" keyEquivalent="z" id="Eis-X4-hsv">
+                                <connections>
+                                    <action selector="undo:" target="-1" id="43q-w1-0GM"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Redo" keyEquivalent="Z" id="5ll-R6-MDV">
+                                <connections>
+                                    <action selector="redo:" target="-1" id="lJb-hB-L7C"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="RlF-yf-X3o"/>
+                            <menuItem title="Cut" keyEquivalent="x" id="WHt-Oe-6VI">
+                                <connections>
+                                    <action selector="cut:" target="-1" id="Tao-u1-ygK"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Copy" keyEquivalent="c" id="YaY-Mx-Y8h">
+                                <connections>
+                                    <action selector="copy:" target="-1" id="5EU-Kr-Zkd"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Paste" keyEquivalent="v" id="V5Q-rZ-Iml">
+                                <connections>
+                                    <action selector="paste:" target="-1" id="xqZ-oe-ap3"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Paste and Match Style" keyEquivalent="V" id="Qie-Jl-pf1">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="pasteAsPlainText:" target="-1" id="Kp2-IC-GiC"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Delete" id="9GV-g9-FnK">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="delete:" target="-1" id="vMt-8k-VUR"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Select All" keyEquivalent="a" id="8Ty-9S-Fp0">
+                                <connections>
+                                    <action selector="selectAll:" target="-1" id="Nw5-4X-VZu"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-178" y="-459"/>
+        </menu>
+        <window identifier="Lpan" title="Launch Custom Channel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="DWp-Xe-rgi" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES" HUD="YES"/>
             <rect key="contentRect" x="1275" y="912" width="560" height="40"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-            <view key="contentView" id="I2Z-1m-8zJ">
+            <view key="contentView" autoresizesSubviews="NO" id="I2Z-1m-8zJ">
                 <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3n-gC-i8F">
+                    <textField autoresizesSubviews="NO" canDrawConcurrently="YES" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3n-gC-i8F">
                         <rect key="frame" x="20" y="9" width="364" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Enter stream URL" drawsBackground="YES" id="b82-gW-Vak">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" placeholderString="Enter stream URL" drawsBackground="YES" usesSingleLineMode="YES" id="b82-gW-Vak">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KEA-Y2-aFv">
+                    <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KEA-Y2-aFv">
                         <rect key="frame" x="488" y="4" width="58" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Go" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iA2-HX-H9n">
+                        <buttonCell key="cell" type="push" title="Go" bezelStyle="rounded" alignment="center" scrollable="YES" lineBreakMode="clipping" truncatesLastVisibleLine="YES" borderStyle="border" focusRingType="none" inset="2" id="iA2-HX-H9n">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                         </buttonCell>
                         <connections>
-                            <action selector="cGo:" target="Voe-Tx-rLC" id="82W-Ab-IUI"/>
+                            <action selector="cGo:" target="Voe-Tx-rLC" id="j8j-fh-kvW"/>
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gmt-ZE-Ssv">
                         <rect key="frame" x="390" y="12" width="94" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Low Quality" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" baseWritingDirection="leftToRight" inset="2" id="oVO-8q-gB6">
+                        <buttonCell key="cell" type="check" title="Low Quality" bezelStyle="regularSquare" imagePosition="left" alignment="left" baseWritingDirection="leftToRight" inset="2" id="oVO-8q-gB6">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-21" y="242"/>
+            <point key="canvasLocation" x="-172" y="-266"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="mFK-sx-Ldb"/>
     </objects>
 </document>
