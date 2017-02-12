@@ -21,20 +21,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let klpqStreamUrl = "rtmp://main.klpq.men/live/"
     let statusUrl = "http://main.klpq.men/stats/ams/gib_stats.php?stream="
     let qBest = "best"
-    let qMedium = "medium"
-    let qWorst = "worst"
     var qual = "best"
-    var proxy = 0
-    
-    var memMain = false
-    var memTv = false
-    var memMursh = false
-    
+    var statusAll = Set<String>()
+
     
     func startTimer (){  //timer settings
         Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(AppDelegate.scheDuled), userInfo: nil, repeats: true)
            }
-    
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -44,45 +37,43 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         startTimer()  //Timer launch
     }
 
-    
-    
-    //notifications
-    
+//notifications
     func showNotification(message: String) -> Void {
         let notification = NSUserNotification()
         notification.title = "\(message)"
         NSUserNotificationCenter.default.deliver(notification)
     }
     
-    //change icon
+//change icon
     func iconChange (){
-        if memMain == true{
-            let icon = NSImage(named: "statusIconOn")
+        if statusAll.contains("Error"){
+            let icon = NSImage(named: "statusError")
             statusItem.image = icon
             statusItem.menu = statusMenu
         } else {
-            let icon = NSImage(named: "statusIcon")
-            statusItem.image = icon
-            statusItem.menu = statusMenu
+            if statusAll.isEmpty {
+                let icon = NSImage(named: "statusIcon")
+                statusItem.image = icon
+                statusItem.menu = statusMenu
+            }
+            if !statusAll.isEmpty {
+                let icon = NSImage(named: "statusIconOn")
+                statusItem.image = icon
+                statusItem.menu = statusMenu
+            }
         }
     }
     
 //Online Checking
-    func checkStatus(url: String, channel: String, recall: Bool) -> Bool {
-        
-        var johnyM = recall
-        
-        
-        //Channel Name Resolver
+    func checkStatus(url: String, channel: String) {
+//channel name resolver
         switch channel {
             case "liveevent": trueName = "Main"
             case "tvstream": trueName = "TV"
             case "murshun": trueName = "Murshun"
-        default: break
-        
+        default: trueName = "Some"
         }
-
-    //recieve status
+//recieve status
         let fullUrl = "\(url)\(channel)"
         if let reqURL = URL(string: fullUrl){
             do {
@@ -90,53 +81,41 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                 let encode = HTMLString.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: true)
                 let json = try JSONSerialization.jsonObject(with: encode!, options: []) as! [String: AnyObject]
                 if let isOnline = json["live"] as! String? {
+                    statusAll.remove("Error")
                     if isOnline == "Online" {
-                        proxy = 0
-                          print("\(trueName) Channel is Online")
-                        if recall == false {
-                            johnyM = true
-                            showNotification(message: "\(trueName) Channel is Online")
+                        if statusAll.contains("\(trueName)"){
                         } else {
-                            }
+                            showNotification(message: "\(trueName) Channel is Online")
+                            statusAll.insert("\(trueName)")
+                        }
                     }
                     else {
-                        proxy = 0
-                          print ("\(trueName) Channel is Offline")
-                        if recall == true {
-                            johnyM = false
+                        if statusAll.contains("\(trueName)"){
+                            statusAll.remove("\(trueName)")
                             showNotification(message: "\(trueName) Channel is Offline")
-                        } else {
-                            }
+                        }
                     }
                 }
             }
-            catch let error as NSError {
-                let icon = NSImage(named: "statusIcon")
-                statusItem.image = icon
-                statusItem.menu = statusMenu
-                johnyM = false
-                
-                print("Failed to load: \(error.localizedDescription)")
-                
-                if proxy > 0{
-                } else{
-                    showNotification(message: "Unable to receive status 👽")
-                    proxy += 1
+            catch _ as NSError {
+                if statusAll.contains("Error"){
+                }
+                else{
+                statusAll.removeAll(keepingCapacity: false)
+                statusAll.insert("Error")
+                showNotification(message:"Unable to receive status 👽")
                 }
             }
         }
-        return johnyM
     }
-
-    
     
 @objc func scheDuled (_ timer: Timer){
-    memMain = checkStatus(url: statusUrl, channel: Main, recall: memMain)
-    memTv = checkStatus(url: statusUrl, channel: TV, recall: memTv)
-    memMursh = checkStatus(url: statusUrl, channel: Mursh, recall: memMursh)
+    checkStatus(url: statusUrl, channel: Main)
+    checkStatus(url: statusUrl, channel: TV)
+    checkStatus(url: statusUrl, channel: Mursh)
+
     iconChange()
     }
-    
     
 //Lauch Stream Fuction. Requires channel and quality
     func launchStream(channel: String, quality: String) {
@@ -145,15 +124,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         task.arguments = ["\(channel)", "\(quality)"]
         task.launch()
     }
-
-    
-    
+  
     func applicationWillTerminate(_ aNotification: Notification) {
             // Insert code here to tear down your application
            }
  
-    // Menu
-
+//Menu
 @IBAction func launchMain(_ sender: NSMenuItem) { // Main Channel
     launchStream(channel: "\(klpqStreamUrl)\(Main) live=1", quality: qBest)
     }
@@ -163,9 +139,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 @IBAction func launchMurshun(_ sender: NSMenuItem) { // Murshun Channel
    launchStream(channel: "\(klpqStreamUrl)\(Mursh) live=1", quality: qBest)
     }
-    
-    
-    
+  
 //Custom Launcher
     @IBOutlet weak var LPanel: NSPanel!
     @IBOutlet weak var getUrl: NSTextField!

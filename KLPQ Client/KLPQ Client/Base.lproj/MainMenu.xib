@@ -116,14 +116,14 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES" HUD="YES"/>
             <rect key="contentRect" x="1275" y="912" width="560" height="40"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-            <view key="contentView" autoresizesSubviews="NO" id="I2Z-1m-8zJ">
+            <view key="contentView" autoresizesSubviews="NO" canDrawConcurrently="YES" id="I2Z-1m-8zJ">
                 <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField autoresizesSubviews="NO" canDrawConcurrently="YES" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3n-gC-i8F">
+                    <textField autoresizesSubviews="NO" canDrawConcurrently="YES" focusRingType="exterior" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3n-gC-i8F">
                         <rect key="frame" x="20" y="9" width="364" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" placeholderString="Enter stream URL" drawsBackground="YES" usesSingleLineMode="YES" id="b82-gW-Vak">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="exterior" placeholderString="Enter stream URL" drawsBackground="YES" usesSingleLineMode="YES" id="b82-gW-Vak">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
