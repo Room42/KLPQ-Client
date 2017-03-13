@@ -14,12 +14,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let statusItem = NSStatusBar.system().statusItem(withLength: -1)
     
     let Main = "liveevent"
-    let TV = "tvstream"
+    let KLPQ = "tvstream"
     let Mursh = "murshun"
     var trueName = "Some"
     var liveStreamer = "/usr/local/bin/livestreamer"
-    let klpqStreamUrl = "rtmp://main.klpq.men/live/"
-    let statusUrl = "http://main.klpq.men/stats/ams/gib_stats.php?stream="
+    var streamLink = "/usr/local/bin/streamlink"
+    let klpqStreamUrl = "rtmp://stream.klpq.men/live/"
+    let statusUrl = "http://stats.klpq.men/channel/"
     let qBest = "best"
     var qual = "best"
     var statusAll = Set<String>()
@@ -44,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         NSUserNotificationCenter.default.deliver(notification)
     }
     
-//change icon
+//menubar icon changer
     func iconChange (){
         if statusAll.contains("Error"){
             let icon = NSImage(named: "statusError")
@@ -69,7 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 //channel name resolver
         switch channel {
             case "liveevent": trueName = "Main"
-            case "tvstream": trueName = "TV"
+            case "tvstream": trueName = "KLPQ"
             case "murshun": trueName = "Murshun"
         default: trueName = "Some"
         }
@@ -80,27 +81,24 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                 let HTMLString = try NSString(contentsOf: reqURL, encoding: String.Encoding.utf8.rawValue)
                 let encode = HTMLString.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: true)
                 let json = try JSONSerialization.jsonObject(with: encode!, options: []) as! [String: AnyObject]
-                if let isOnline = json["live"] as! String? {
+                if let isOnline = json["isLive"] as! Bool? {
                     statusAll.remove("Error")
-                    if isOnline == "Online" {
-                        if statusAll.contains("\(trueName)"){
-                        } else {
+                    if isOnline == true {
+                        if !statusAll.contains("\(trueName)"){
                             showNotification(message: "\(trueName) Channel is Online")
                             statusAll.insert("\(trueName)")
                         }
                     }
                     else {
                         if statusAll.contains("\(trueName)"){
-                            statusAll.remove("\(trueName)")
                             showNotification(message: "\(trueName) Channel is Offline")
+                            statusAll.remove("\(trueName)")
                         }
                     }
                 }
             }
             catch _ as NSError {
-                if statusAll.contains("Error"){
-                }
-                else{
+                if !statusAll.contains("Error"){
                 statusAll.removeAll(keepingCapacity: false)
                 statusAll.insert("Error")
                 showNotification(message:"Unable to receive status 👽")
@@ -111,16 +109,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
 @objc func scheDuled (_ timer: Timer){
     checkStatus(url: statusUrl, channel: Main)
-    checkStatus(url: statusUrl, channel: TV)
+    checkStatus(url: statusUrl, channel: KLPQ)
     checkStatus(url: statusUrl, channel: Mursh)
-
     iconChange()
     }
     
-//Lauch Stream Fuction. Requires channel and quality
-    func launchStream(channel: String, quality: String) {
+//stream launcher
+    func launchStream(channel: String, quality: String, tool: String) {
         let task = Process()
-        task.launchPath = liveStreamer
+        task.launchPath = tool
         task.arguments = ["\(channel)", "\(quality)"]
         task.launch()
     }
@@ -131,13 +128,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
  
 //Menu
 @IBAction func launchMain(_ sender: NSMenuItem) { // Main Channel
-    launchStream(channel: "\(klpqStreamUrl)\(Main) live=1", quality: qBest)
+    launchStream(channel: "\(klpqStreamUrl)\(Main) live=1", quality: qBest, tool: liveStreamer)
     }
 @IBAction func launchTV(_ sender: NSMenuItem) { // TV Channel
-   launchStream(channel: "\(klpqStreamUrl)\(TV) live=1", quality: qBest)
+    launchStream(channel: "\(klpqStreamUrl)\(KLPQ) live=1", quality: qBest, tool: liveStreamer)
     }
 @IBAction func launchMurshun(_ sender: NSMenuItem) { // Murshun Channel
-   launchStream(channel: "\(klpqStreamUrl)\(Mursh) live=1", quality: qBest)
+   launchStream(channel: "\(klpqStreamUrl)\(Mursh) live=1", quality: qBest, tool: liveStreamer)
     }
   
 //Custom Launcher
@@ -152,7 +149,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             qual = "best"
         }
         let cUrl = getUrl.stringValue
-        launchStream(channel: cUrl, quality: qual)
+        launchStream(channel: cUrl, quality: qual, tool: streamLink)
         getUrl.stringValue = ""
         LPanel.close()
     }
