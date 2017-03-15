@@ -17,8 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let KLPQ = "klpq"
     let Mursh = "murshun"
     var trueName = "Some"
-    var liveStreamer = "/usr/local/bin/livestreamer"
-    var streamLink = "/usr/local/bin/streamlink"
+    let liveStreamer = "/usr/local/bin/livestreamer"
+    let streamLink = "/usr/local/bin/streamlink"
     let klpqStreamUrl = "rtmp://stream.klpq.men/live/"
     let statusUrl = "http://stats.klpq.men/channel/"
     let qBest = "best"
@@ -115,9 +115,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     }
     
 //stream launcher
-    func launchStream(channel: String, quality: String, tool: String) {
+    
+    func launchStream(channel: String, quality: String) {
         let task = Process()
-        task.launchPath = tool
+        task.launchPath = streamLink
         task.arguments = ["\(channel)", "\(quality)"]
         task.launch()
     }
@@ -128,13 +129,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
  
 //Menu
 @IBAction func launchMain(_ sender: NSMenuItem) { // Main Channel
-    launchStream(channel: "\(klpqStreamUrl)\(Main) live=1", quality: qBest, tool: streamLink)
+    launchStream(channel: "\(klpqStreamUrl)\(Main) live=1", quality: qBest)
     }
 @IBAction func launchKLPQ(_ sender: NSMenuItem) { // TV Channel
-    launchStream(channel: "\(klpqStreamUrl)\(KLPQ) live=1", quality: qBest, tool: streamLink)
+    launchStream(channel: "\(klpqStreamUrl)\(KLPQ) live=1", quality: qBest)
     }
 @IBAction func launchMurshun(_ sender: NSMenuItem) { // Murshun Channel
-   launchStream(channel: "\(klpqStreamUrl)\(Mursh) live=1", quality: qBest, tool: streamLink)
+   launchStream(channel: "\(klpqStreamUrl)\(Mursh) live=1", quality: qBest)
     }
   
 //Custom Launcher
@@ -149,7 +150,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             qual = "best"
         }
         let cUrl = getUrl.stringValue
-        launchStream(channel: cUrl, quality: qual, tool: streamLink)
+        launchStream(channel: cUrl, quality: qual)
         getUrl.stringValue = ""
         LPanel.close()
     }
