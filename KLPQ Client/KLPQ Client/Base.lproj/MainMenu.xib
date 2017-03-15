@@ -671,10 +671,10 @@
                         <action selector="launchMain:" target="Voe-Tx-rLC" id="G6s-97-AYu"/>
                     </connections>
                 </menuItem>
-                <menuItem title="TV Channel" id="uCG-UH-5Ij">
+                <menuItem title="KLPQ Channel" id="uCG-UH-5Ij">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="launchTV:" target="Voe-Tx-rLC" id="XDc-VR-66z"/>
+                        <action selector="launchKLPQ:" target="Voe-Tx-rLC" id="cbn-Z3-Hlo"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Murshun Channel" id="2Yp-Sa-3Js">
@@ -702,7 +702,7 @@
         <window identifier="Lpan" title="Launch Custom Channel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="DWp-Xe-rgi" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES" HUD="YES"/>
             <rect key="contentRect" x="1275" y="912" width="560" height="40"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" autoresizesSubviews="NO" canDrawConcurrently="YES" id="I2Z-1m-8zJ">
                 <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
                 <autoresizingMask key="autoresizingMask"/>

@@ -13,8 +13,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     @IBOutlet weak var statusMenu: NSMenu!
     let statusItem = NSStatusBar.system().statusItem(withLength: -1)
     
-    let Main = "liveevent"
-    let KLPQ = "tvstream"
+    let Main = "main"
+    let KLPQ = "klpq"
     let Mursh = "murshun"
     var trueName = "Some"
     var liveStreamer = "/usr/local/bin/livestreamer"
@@ -69,8 +69,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     func checkStatus(url: String, channel: String) {
 //channel name resolver
         switch channel {
-            case "liveevent": trueName = "Main"
-            case "tvstream": trueName = "KLPQ"
+            case "main": trueName = "Main"
+            case "klpq": trueName = "KLPQ"
             case "murshun": trueName = "Murshun"
         default: trueName = "Some"
         }
@@ -128,13 +128,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
  
 //Menu
 @IBAction func launchMain(_ sender: NSMenuItem) { // Main Channel
-    launchStream(channel: "\(klpqStreamUrl)\(Main) live=1", quality: qBest, tool: liveStreamer)
+    launchStream(channel: "\(klpqStreamUrl)\(Main) live=1", quality: qBest, tool: streamLink)
     }
-@IBAction func launchTV(_ sender: NSMenuItem) { // TV Channel
-    launchStream(channel: "\(klpqStreamUrl)\(KLPQ) live=1", quality: qBest, tool: liveStreamer)
+@IBAction func launchKLPQ(_ sender: NSMenuItem) { // TV Channel
+    launchStream(channel: "\(klpqStreamUrl)\(KLPQ) live=1", quality: qBest, tool: streamLink)
     }
 @IBAction func launchMurshun(_ sender: NSMenuItem) { // Murshun Channel
-   launchStream(channel: "\(klpqStreamUrl)\(Mursh) live=1", quality: qBest, tool: liveStreamer)
+   launchStream(channel: "\(klpqStreamUrl)\(Mursh) live=1", quality: qBest, tool: streamLink)
     }
   
 //Custom Launcher
