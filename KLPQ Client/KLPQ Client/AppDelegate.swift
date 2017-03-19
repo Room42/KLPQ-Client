@@ -41,6 +41,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 //notifications
     func showNotification(message: String) -> Void {
         let notification = NSUserNotification()
+        //button
+        notification.hasActionButton = true
+        notification.actionButtonTitle = "Launch"
+        
         notification.title = "\(message)"
         NSUserNotificationCenter.default.deliver(notification)
     }
@@ -116,9 +120,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
 //stream launcher
     
-    func launchStream(channel: String, quality: String) {
+    func launchStream(channel: String, quality: String, tool: String) {
         let task = Process()
-        task.launchPath = streamLink
+        task.launchPath = tool
         task.arguments = ["\(channel)", "\(quality)"]
         task.launch()
     }
@@ -129,13 +133,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
  
 //Menu
 @IBAction func launchMain(_ sender: NSMenuItem) { // Main Channel
-    launchStream(channel: "\(klpqStreamUrl)\(Main) live=1", quality: qBest)
+    launchStream(channel: "\(klpqStreamUrl)\(Main) live=1", quality: qBest, tool: liveStreamer)
     }
 @IBAction func launchKLPQ(_ sender: NSMenuItem) { // TV Channel
-    launchStream(channel: "\(klpqStreamUrl)\(KLPQ) live=1", quality: qBest)
+    launchStream(channel: "\(klpqStreamUrl)\(KLPQ) live=1", quality: qBest, tool: liveStreamer)
     }
 @IBAction func launchMurshun(_ sender: NSMenuItem) { // Murshun Channel
-   launchStream(channel: "\(klpqStreamUrl)\(Mursh) live=1", quality: qBest)
+   launchStream(channel: "\(klpqStreamUrl)\(Mursh) live=1", quality: qBest, tool: liveStreamer)
     }
   
 //Custom Launcher
@@ -150,7 +154,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             qual = "best"
         }
         let cUrl = getUrl.stringValue
-        launchStream(channel: cUrl, quality: qual)
+        launchStream(channel: cUrl, quality: qual, tool: streamLink)
         getUrl.stringValue = ""
         LPanel.close()
     }
